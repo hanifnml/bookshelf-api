@@ -20,7 +20,7 @@ const addBookHandler = (request, h) => {
     })
     response.code(400)
     return response
-  }
+  };
 
   if (readPage > pageCount) {
     const response = h.response({
@@ -29,12 +29,12 @@ const addBookHandler = (request, h) => {
     })
     response.code(400)
     return response
-  }
+  };
 
-  const id = nanoid(15)
-  const finished = pageCount === readPage ? true : false
+  const id = nanoid(16)
   const insertedAt = new Date().toISOString()
   const updatedAt = insertedAt
+  const finished = pageCount === readPage ? true : false
 
   const newBook = {
     id,
@@ -65,7 +65,7 @@ const addBookHandler = (request, h) => {
     })
     response.code(201)
     return response
-  }
+  };
   const response = h.response({
     status: 'error',
     message: 'Buku gagal ditambahkan'

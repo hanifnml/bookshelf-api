@@ -152,7 +152,7 @@ const editBookByIdHandler = (request, h) => {
       message: 'Gagal memperbarui buku. readPage tidak boleh lebih besar dari pageCount',
     }).code(400);
     return response;
-  }
+  };
 
   const index = bookshelf.findIndex((book) => book.id === id);
 
@@ -196,7 +196,7 @@ const deleteBookByIdHandler = (request, h) => {
       message: 'Buku berhasil dihapus',
     }).code(200);
     return response;
-  };
+  }
 
   const response = h.response({
     status: 'fail',

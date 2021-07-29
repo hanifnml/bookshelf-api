@@ -1,0 +1,31 @@
+const getBookByQueryReading = (request, h) => {
+  const {reading} = request.query;
+
+  const read = (reading === 1) ? true : false;
+
+  const filteredBooks = bookshelf;
+
+  if (reading !== undefined) {
+    filteredBooks = filteredBooks.filter((book) => book.reading === read);
+
+    const response = h.response({
+      status: 'success',
+      data: {
+        books: filteredBooks.map((book) => ({
+          id: book.id,
+          name: book.name,
+          publisher: book.publisher,
+          reading: book.reading,
+        })),
+      },
+    }).code(200);
+    return response;
+  };
+
+  const response = h.response({
+    status: 'success',
+    data: {
+      bookshelf,
+    },
+  });
+};
